@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<GridPane alignment="center" hgap="10" prefHeight="378.0" prefWidth="234.0" vgap="10" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <columnConstraints>
+      <ColumnConstraints maxWidth="186.33332316080725" minWidth="450.0" percentWidth="0.0" prefWidth="186.33332316080725" />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="-Infinity" />
+      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="-Infinity" />
+      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="-Infinity" />
+      <RowConstraints maxHeight="114.00000762939453" minHeight="0.0" prefHeight="0.0" />
+   </rowConstraints>
+   <children>
+      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="54.0" prefWidth="473.0" text="Baps 'N' Burgers" textAlignment="CENTER" underline="true">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+      <TabPane fx:id="menuTab" prefHeight="291.0" prefWidth="357.0" tabClosingPolicy="UNAVAILABLE" GridPane.rowIndex="1">
+        <tabs>
+          <Tab text="Untitled Tab 1">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="262.0" prefWidth="256.0">
+                     <children>
+                        <GridPane prefHeight="213.0" prefWidth="242.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="216.33333333333334" minWidth="10.0" prefWidth="216.33333333333334" />
+                          </columnConstraints>
+                          <rowConstraints>
+                              <RowConstraints maxHeight="68.99998696645102" minHeight="10.0" prefHeight="66.99999618530273" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="71.00000762939453" minHeight="10.0" prefHeight="47.66667048136394" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="63.666656494140625" minHeight="10.0" prefHeight="38.666648864746094" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="35.66668701171875" minHeight="10.0" prefHeight="18.333343505859375" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="31.0" prefWidth="125.0" text="Select Table Number:" textAlignment="CENTER" />
+                              <ChoiceBox fx:id="tableNumberCB" prefHeight="25.0" prefWidth="77.0" GridPane.halignment="RIGHT" />
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="245.0" text="Select Number of people at Table:" textAlignment="CENTER" GridPane.rowIndex="1" />
+                              <Slider fx:id="numberofpeopleSLD" blockIncrement="1.0" majorTickUnit="1.0" max="6.0" min="1.0" minorTickCount="0" prefHeight="37.0" prefWidth="315.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="1.0" GridPane.rowIndex="2" />
+                              <Button fx:id="placeOrderBTN" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#takeorder" prefHeight="90.0" prefWidth="216.0" text="Place order" GridPane.rowIndex="4" />
+                           </children>
+                           <padding>
+                              <Insets left="12.0" />
+                           </padding>
+                        </GridPane>
+                        <ImageView fx:id="WelcomePNG" fitHeight="206.0" fitWidth="200.0" layoutX="242.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@JavaBurger.jpg" />
+                           </image></ImageView>
+                        <HBox layoutX="4.0" layoutY="217.0" prefHeight="39.0" prefWidth="228.0">
+                           <children>
+                              <Label fx:id="inputConfirmation" alignment="CENTER" contentDisplay="CENTER" prefHeight="39.0" prefWidth="226.0" text="Label" textAlignment="CENTER" textFill="#f90202" />
+                           </children>
+                        </HBox>
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Untitled Tab 2">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="262.0" prefWidth="261.0">
+                     <children>
+                        <GridPane layoutX="3.0" prefHeight="63.0" prefWidth="450.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="232.0" minWidth="10.0" prefWidth="210.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="145.33331298828125" minWidth="10.0" prefWidth="75.66668701171875" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="147.33331298828125" minWidth="10.0" prefWidth="147.33331298828125" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="54.33331298828125" minHeight="8.333305358886719" prefHeight="10.999992370605469" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="226.0" text="How many courses would you like? " />
+                              <ChoiceBox fx:id="courseNumberCB" prefHeight="25.0" prefWidth="37.0" GridPane.columnIndex="1" />
+                              <Label fx:id="courseChosen" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="225.0" text="Label" textAlignment="CENTER" GridPane.rowIndex="1" />
+                              <Button fx:id="confirmCourseBTN" alignment="CENTER" mnemonicParsing="false" onAction="#displayCourse" text="Confirm" textAlignment="CENTER" GridPane.columnIndex="2" />
+                           </children>
+                        </GridPane>
+                        <TableView fx:id="menu" layoutX="8.0" layoutY="63.0" prefHeight="190.0" prefWidth="431.0">
+                          <columns>
+                          </columns>
+                        </TableView>
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+            <Tab text="Untitled Tab 3">
+                <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="262.0" prefWidth="261.0">
+                        <children>
+                            <GridPane layoutX="3.0" prefHeight="63.0" prefWidth="450.0">
+                                <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="232.0" minWidth="10.0" prefWidth="210.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="145.33331298828125" minWidth="10.0" prefWidth="75.66668701171875" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="147.33331298828125" minWidth="10.0" prefWidth="147.33331298828125" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="54.33331298828125" minHeight="8.333305358886719" prefHeight="10.999992370605469" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                <children>
+                                    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="226.0" text="How many courses would you like? " />
+                                </children>
+                            </GridPane>
+                            <TableView fx:id="selectedMenuTV" layoutX="8.0" layoutY="63.0" prefHeight="190.0" prefWidth="431.0">
+                                <columns>
+                                </columns>
+                            </TableView>
+                        </children></AnchorPane>
+                </content>
+            </Tab>
+            <Tab text="Untitled Tab 4">
+                <content>
+
+                </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</GridPane>
