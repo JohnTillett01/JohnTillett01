@@ -40,13 +40,19 @@ public class Controller {
     private TableView menu;
     @FXML
     private TableView selectedMenuTV;
+    @FXML
+    private Button placeOrder;
 
     ObservableList<menuItem> menuContent;
     ObservableList<menuItem> selectedOrder;
+    double peopleAtTable;
+    double currentOrderInt;
 
 
     @FXML
     public void initialize(){
+        selectedOrder = FXCollections.observableArrayList();
+        currentOrderInt=1;
         TableColumn FoodItemCol = new TableColumn("Item");
         TableColumn FoodPriceCol = new TableColumn("Price (£)");
         TableColumn FoodCaloriesCol = new TableColumn("Calories");
@@ -60,6 +66,9 @@ public class Controller {
         TableColumn FoodCourseCol2 = new TableColumn("Course");
         TableColumn FoodVegiCol2 = new TableColumn("Vegetarian");
         TableColumn SelectCol2 = new TableColumn("Select");
+
+        FoodCourseCol2.prefWidthProperty().bind(selectedMenuTV.widthProperty().multiply(0.11));
+        FoodItemCol2.prefWidthProperty().bind(selectedMenuTV.widthProperty().multiply(0.25));
 
         selectedMenuTV.getColumns().addAll(FoodCourseCol2, FoodItemCol2, FoodPriceCol2, FoodCaloriesCol2, FoodVegiCol2, SelectCol2);
         menu.getColumns().addAll(FoodCourseCol, FoodItemCol, FoodPriceCol, FoodCaloriesCol, FoodVegiCol, SelectCol);
@@ -100,6 +109,25 @@ public class Controller {
                 new PropertyValueFactory<menuItem, String>("select")
         );
 
+        FoodItemCol2.setCellValueFactory(
+                new PropertyValueFactory<menuItem, String>("foodItem")
+        );
+        FoodPriceCol2.setCellValueFactory(
+                new PropertyValueFactory<menuItem, String>("price")
+        );
+        FoodCaloriesCol2.setCellValueFactory(
+                new PropertyValueFactory<menuItem, String>("calories")
+        );
+        FoodCourseCol2.setCellValueFactory(
+                new PropertyValueFactory<menuItem, String>("course")
+        );
+        FoodVegiCol2.setCellValueFactory(
+                new PropertyValueFactory<menuItem, String>("vegetarian")
+        );
+        SelectCol2.setCellValueFactory(
+                new PropertyValueFactory<menuItem, String>("select")
+        );
+
         tableNumberCB.setItems(tableNumbers);
         courseNumberCB.setItems(courseNumbers);
         menu.setItems(menuContent);
@@ -109,7 +137,7 @@ public class Controller {
     }
 
     public void takeorder() {
-        double peopleAtTable;
+
         String tableNumber;
         peopleAtTable = numberofpeopleSLD.getValue();
         tableNumber = (String) tableNumberCB.getValue();
@@ -121,40 +149,48 @@ public class Controller {
 
     @FXML
     public void displayCourse() {
-        int numberOfSelections = 0;
-        int coursesWanted = 0;
-
-        //coursesWanted = Integer.parseInt(courseNumberCB.getValue().toString());
-
-
         if (courseNumberCB.getValue() == null) {
             courseChosen.setText("Please select an option");
             courseChosen.setTextFill(Color.web("#ff0000"));
         } else {courseChosen.setText("Select " + courseNumberCB.getValue() + " items from below.");
         courseChosen.setTextFill(Color.web("#000000"));
-            //for (int i = 0; i < menu.getItems().size(); i++) {
-            //    System.out.println(menu.getItems().get(i).toString());
-            //    if (menu.getItems().get(i) == "true"){
-            //        numberOfSelections = numberOfSelections + 1;
-            //    }
-           // }
-            selectedOrder = FXCollections.observableArrayList();
-            for (menuItem selectedMenu : menuContent ){
-                if (selectedMenu.getSelect().isSelected()){
-                    //selectedOrder = FXCollections.observableArrayList( new menuItem(selectedMenu.getCourse(),selectedMenu.getFoodItem(),selectedMenu.getPrice(),selectedMenu.getCalories(),selectedMenu.getVegetarian()));
+
+        }
+    }
+
+    public void placeOrder() {
+        int numberOfSelections = 0;
+        int coursesWanted = 0;
+
+        coursesWanted = Integer.parseInt(courseNumberCB.getValue().toString());
+
+        for (menuItem selectedMenu : menuContent ){
+            if (selectedMenu.getSelect().isSelected()){
+                numberOfSelections++;
+            }
+        }
+
+        if (numberOfSelections==coursesWanted) {
+            for (menuItem selectedMenu : menuContent) {
+                if (selectedMenu.getSelect().isSelected()) {
                     selectedOrder.add(selectedMenu);
-                    System.out.println("Testing 123");
                 }
             }
 
+            courseChosen.setText("");
+            courseNumberCB.setValue(0);
 
-            //if (numberOfSelections != coursesWanted) {
-             //   courseChosen.setText(String.valueOf(numberOfSelections));
-              //  courseChosen.setTextFill(Color.web("#ff0000"));
-            //}
-            //else {
-             //   courseChosen.setText("You have selected the same number!");
-              //  courseChosen.setTextFill(Color.web("#000000"));
-            //}
+            if (peopleAtTable==currentOrderInt){
+                menuTab.getSelectionModel().select(2);
+            } else {
+                currentOrderInt++;
+            }
+
+
+        } else {
+            courseChosen.setText("*Please select " + courseNumberCB.getValue() + " items" );
+            courseChosen.setTextFill(Color.web("#ff0000"));
         }
     }
+}
+
